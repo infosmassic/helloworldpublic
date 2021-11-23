@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Running pre-receive script hook on push"
-
-exit 1
