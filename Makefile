@@ -11,10 +11,10 @@ hello: hello.c
 # creating it if necessary
 # .PHONY: install
 install:
-	mkdir -p binaries
-	cp -p hello binaries
+	mkdir -p exec
+	mv hello exec
 
 #   # This rule tells make to delete hello and hello.o
 #.PHONY: clean 
 clean:
-	rm -f hello
+	rm -rf exec
