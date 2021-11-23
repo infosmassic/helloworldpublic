@@ -18,7 +18,7 @@ default:
   cache:
     key: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
     paths:
-      - .
+      - *
     untracked: true
 
 stages:          # List of stages for jobs, and their order of execution
