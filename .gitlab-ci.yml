@@ -38,6 +38,7 @@ build-job:       # This job runs in the build stage, which runs first.
     - make install
     - echo "Build from $CI_COMMIT_REF_SLUG" >> .tmp_date
     - date >> .tmp_date
+    - cat .tmp_date
   tags:
     - linux64
 
