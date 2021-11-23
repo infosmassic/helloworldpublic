@@ -18,27 +18,18 @@ default:
 
 
 stages:          # List of stages for jobs, and their order of execution
-  - prepare_env
   - build
   - test
   - deploy
   # only:
   #   - merge_requests
 
-prepare-env-job:       # This job runs in the build stage, which runs first.
-  stage: prepare_env
-  script:
-    - yum search make
-    - yum install -y make
-  tags:
-    - linux64
-
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - echo "I'm in "
     - pwd
-    - yum search make
+    - yum install -y make
     - make
   tags:
     - linux64
