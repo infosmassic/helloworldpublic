@@ -13,19 +13,37 @@
 #
 # For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
 
+default:
+  # image: centos:7
+  image: local/centos7_build
+  # Sahred cache between all jobs (build, test) of the branch
+  cache:
+    key: "$CI_COMMIT_REF_SLUG"
+    # paths:
+    #   - exec
+    #   - sources
+    untracked: true
+
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
-  - deploy
+  # - deploy
   # only:
   #   - merge_requests
-
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
+    - echo "I'm in "
+    - pwd
+    - if [ -d exec ]; then ls -l exec; fi
+    - ls -la sources
+    # - yum install -y make gcc
+    - cat sources/hello.c
+    - make
+    - echo "Build from $CI_COMMIT_REF_SLUG" >> sources/.tmp_date
+    - date >> sources/.tmp_date
+    - cat sources/.tmp_date
   tags:
     - linux64
 
@@ -34,17 +52,22 @@ unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
     - echo "Running unit tests... This will take about 2 seconds."
-    - sleep 2
-    - echo "Code coverage is 90%"
+    - pwd
+    - ls -l exec
+    - ls -la sources
+    - ./exec/hello
+    - echo "Test from $CI_COMMIT_REF_SLUG" >> sources/.tmp_date
+    - date >> sources/.tmp_date
+    - cat sources/.tmp_date
   tags:
     - linux64
 
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
-  tags:
-    - linux64
+# deploy-job:      # This job runs in the deploy stage.
+#   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+#   script:
+#     - echo "Deploying application..."
+#     - echo "Application successfully deployed."
+#   tags:
+#     - linux64
 
