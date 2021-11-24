@@ -39,6 +39,7 @@ build-job:       # This job runs in the build stage, which runs first.
     - ls -l exec
     - ls -l sources
     # - yum install -y make gcc
+    - cat sources/hello.c
     - make
     - echo "Build from $CI_COMMIT_REF_SLUG" >> sources/.tmp_date
     - date >> sources/.tmp_date
