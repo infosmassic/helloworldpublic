@@ -36,7 +36,9 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - echo "I'm in "
     - pwd
-    - yum install -y make gcc
+    - ls -l exec
+    - ls -l sources
+    # - yum install -y make gcc
     - make
     - echo "Build from $CI_COMMIT_REF_SLUG" >> sources/.tmp_date
     - date >> sources/.tmp_date
@@ -50,10 +52,12 @@ unit-test-job:   # This job runs in the test stage.
   script:
     - echo "Running unit tests... This will take about 2 seconds."
     - pwd
-    - ls -l
+    - ls -l exec
+    - ls -l sources
     - echo "Test from $CI_COMMIT_REF_SLUG" >> sources/.tmp_date
     - date >> sources/.tmp_date
     - cat sources/.tmp_date
+    - ./exec/hello
   tags:
     - linux64
 
