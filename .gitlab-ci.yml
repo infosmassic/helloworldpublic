@@ -19,9 +19,9 @@ default:
   # Sahred cache between all jobs (build, test) of the branch
   cache:
     key: "$CI_COMMIT_REF_SLUG"
-    paths:
-      - exec
-      - sources
+    # paths:
+    #   - exec
+    #   - sources
     untracked: true
 
 stages:          # List of stages for jobs, and their order of execution
@@ -36,8 +36,8 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - echo "I'm in "
     - pwd
-    - ls -l exec
-    - ls -l sources
+    - if [ -d exec ]; then ls -l exec; fi
+    - ls -la sources
     # - yum install -y make gcc
     - cat sources/hello.c
     - make
