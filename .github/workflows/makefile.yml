@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install dependencies
+    
+    - uses: actions/checkout@v2
+    
+    - name: Run make
       run: make
 
