@@ -23,7 +23,15 @@ jobs:
         retention-days: 1
       
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Run test
         run: echo "Salut !"
+
+  test2:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test
+        run: echo "Salut 2 !"
