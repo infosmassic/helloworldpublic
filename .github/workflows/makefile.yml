@@ -35,9 +35,6 @@ jobs:
       with:
         name: my-artifact
         path: exec
-
-    - name: Ls exec
-      run: ls -l exec
       
     - name: Run test
       run: echo "Salut !"
