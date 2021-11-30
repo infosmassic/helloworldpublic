@@ -9,9 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    
     - uses: actions/checkout@v2
     
     - name: Run make 
@@ -23,4 +21,9 @@ jobs:
         name: my-artifact
         path: exec
         retention-days: 1
-
+      
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test
+        run: echo "Salut !"
