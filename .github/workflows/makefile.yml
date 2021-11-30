@@ -27,21 +27,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
  
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v2.0.10
-      with:
-        name: my-artifact
-        path: exec
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: my-artifact
+          path: exec
      
-    - name: Ls exec
-      run: ls -l exec
+      - name: Ls exec
+        run: ls -l exec
       
-    - name: Run test
-      run: echo "Salut !"
+      - name: Run test 1
+        run: ./exec/hello
 
   test2:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Run test
-        run: echo "Salut 2 !"
+        
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: my-artifact
+          path: exec
+     
+      - name: Ls exec
+        run: ls -l exec
+      
+      - name: Run test 2
+        run: ./exec/hello
+      
