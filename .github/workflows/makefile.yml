@@ -28,6 +28,6 @@ jobs:
         # The desired behavior if no files are found using the provided path.
     Available Options:
       warn: "No artifcat found"
-        # Duration after which artifact will expire in days. 0 means using default retention. Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
-        retention-days: 1    
+      # Duration after which artifact will expire in days. 0 means using default retention. Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
+      retention-days: 1    
 
