@@ -15,6 +15,9 @@ jobs:
     - name: Run make 
       run: make
       
+    - name: Change permissions
+      run: chmod 755 exec/*
+      
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
