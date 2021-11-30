@@ -13,4 +13,5 @@ douze<br />
 treize<br />
 quinze<br />
 seize<br />
-seventeen
+seventeen<br />
+eighteen
