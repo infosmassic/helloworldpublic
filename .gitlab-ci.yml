@@ -15,7 +15,7 @@
 
 default:
   # image: centos:7
-  image: local/centos7_build
+  image: local/centos7_qa
   # Sahred cache between all jobs (build, test) of the branch
   cache:
     key: "$CI_COMMIT_REF_SLUG"
